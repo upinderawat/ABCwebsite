@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'basic_app:index' %}">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
@@ -27,6 +27,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'basic_app:register' %}">Register</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'basic_app:user_logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'basic_app:user_login' %}">Login</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

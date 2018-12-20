@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'basic_app/base.html' %}
+{% block bodycontent %}
+    <div class="jumbotron">
+        <h1 class="display-4">Log In</h1>
+        <form action="{% url 'basic_app:user_login' %}" method="POST">
+            {% csrf_token %}
+            <label for="usernameId">Username</label>
+            <input type="text" id="usernameId" name="username" placeholder="Enter Username">
 
-</body>
-</html>
+            <label for="passwordId">Password</label>
+            <input type="password" id="passwordId" name="password">
+
+            <button type="submit" value="Login">Log In</button>
+        </form>
+    </div>
+{% endblock %}
